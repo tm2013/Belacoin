@@ -33,7 +33,7 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0xf079ae7afd33e028a001d587ed1100979d01dac9fdde28754d5e7d89cece9542");
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // BelaCoin: starting difficulty is 1 / 2^12
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 10); // BelaCoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 uint256 nBestChainWork = 0;
@@ -1279,7 +1279,7 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
                 if (pindexLast->nHeight+1 >= 2116) { DiffMode = 2; }
         }
         else {
-                if (pindexLast->nHeight+1 >= 6115) { DiffMode = 2; }
+                if (pindexLast->nHeight+1 >= 20) { DiffMode = 2; }
         }
 
         if                (DiffMode == 1) { return GetNextWorkRequired_V1(pindexLast, pblock); } //legacy diff mode
